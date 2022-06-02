@@ -59,13 +59,15 @@ const BoardCardModal = () => {
     <div className="fixed inset-0 bg-gray-400/60 flex justify-center items-center">
       <div
         ref={modalRef}
-        className="bg-white h-3/4 w-1/2 p-8 rounded-md flex flex-col"
+        className="bg-white h-3/4 w-1/2 p-8 rounded-md flex flex-col gap-2"
       >
-        <div className="flex items-center pb-2 border-b-2">
+        <div className="flex items-center justify-between pb-2 border-b-2">
           <input
-            className="border-0 focus:ring-0 text-5xl font-bold grow"
+            className="w-4/5 outline-0 text-5xl font-bold"
             type="text"
-            defaultValue={currentTask.taskTitle}
+            defaultValue={
+              currentTask.taskTitle === "Untitled" ? "" : currentTask.taskTitle
+            }
             onChange={(e) => handleTaskChange(e, "title")}
             placeholder="Give a task title..."
           />
@@ -84,7 +86,7 @@ const BoardCardModal = () => {
           </svg>
         </div>
         <textarea
-          className="border-0 focus:ring-0 h-full"
+          className="outline-none h-full"
           type="text"
           defaultValue={currentTask.taskDescription}
           onChange={(e) => handleTaskChange(e, "description")}
